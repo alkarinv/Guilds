@@ -1,0 +1,86 @@
+
+guilds:
+    minMembersForCreation: 3
+    costToCreate: 1500
+    maxNameLength: 12  ### Max of 16
+    allowPerGuildRanks: false
+    customizableRanksPerGuild: 10 ## only matters if allowPerGuildRanks is true
+
+## Listing of which permissions are enabled(meaning they can be used or assigned by players) custom perms can be added here as well
+## All permissions can be run by an admin even if they are disabled
+## Permission nodes are guild.<permission name>
+permissions:
+    invite: true   
+    uninvite: true
+    join: true    
+    setleader: true
+    withdraw: true
+    deposit: true  
+    promote: true  
+    demote: true   
+    kick: true    
+    setlabel: true
+    disband: true  
+    leave: true 
+    upgrade: false
+    downgrade: false
+    ## These following are overridden by allowPerGuildRanks
+    createrank: true
+    deleterank: true
+    createtitle: true
+    deletetitle: true
+    addRankPerm: true
+    deleteRankPerm: true
+    addRankTitle: true
+    deleteRankTitle: true
+    ## Add any custom perms
+    guildPerm1: true
+
+## What are the default ranks
+## Add more ranks here
+# Options:
+# label = What gets displayed on guild info, a permissions query, or rank query. <= 48 char
+# rank = What level of rank.. lower is better and cannot be equal to the Leader rank. [2-1000]
+# permissions = what permissions this rank has
+# color [optional] = Color of a member name during a query
+# the "name" must be less than or equal to 16 characters
+defaultRanks:
+    leader: ### This rank MUST exist, all others are optional. Do not change the name or rank
+        rank: 1 ### Dont change
+        label: "&4Leader"   # <-- fine to change
+        color: "&4"         # <-- fine to change
+        permissions: [invite,create, uninvite, setleader,withdraw,deposit,promote,demote,kick,setlabel,disband,leave,createrank,deleterank,createtitle,deletetitle] # <-- fine to change
+        customPermissions:
+            extraProtection: extraprot.permissions.node
+    officer:
+        label: "&5Officer"
+        color: "&5"
+        rank: 500
+        permissions: [deposit, leave, withdraw, invite, uninvite, promote]
+    member:
+        label: "&eMember"
+        color: "&e"
+        default: true
+        rank: 1000
+        permissions: [deposit, leave]
+
+### You can add more guild ranks just like ranks
+defaultGuildRanks:
+    guild: ### This rank MUST exist, all others are optional. Do not change the name
+        rank: 900 # <-- fine to change
+        label: "Clan" # <-- fine to change
+        customPermissions:
+            guildPerm1: my.guild.permission.node
+            guildPerm2: my.guild.permission.node2
+    charter: ### This rank MUST exist, Do not change the name or rank
+        rank: 1000 ### Dont change
+        label: "Charter"   # <-- fine to change
+        customPermissions:
+            charterPerm1: my.guild.permission.node
+    veteranGuild: 
+        rank: 500 
+        label: "VeteranClan" 
+        customPermissions:
+            charterPerm1: my.veteran.permission.node
+
+
